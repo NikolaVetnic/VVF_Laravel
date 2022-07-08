@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
@@ -102,3 +103,13 @@ Route::post('/post', [PostController::class, 'create']);
 Route::put('/post/{id}', [PostController::class, 'update', 'id']);
 
 Route::delete('/post/{id}', [PostController::class, 'delete', 'id']);
+
+// =-=-=-= BLADE
+
+Route::get('/blade/{first_name}', function ($first_name) {
+    return view('greetings', ['first_name' => $first_name]);
+});
+
+// =-=-=-= CAR (resourceful)
+
+Route::resource('cars', CarController::class);

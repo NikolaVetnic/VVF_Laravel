@@ -16,8 +16,9 @@ class UserController extends Controller
     public function get($id)
     {
         $retrievedUser0 = User::all()->where('id', $id); // probably wrong because fetches all
-        $retrievedUser1 = User::where('id', $id)->get(); // no intellisense when writing it this way
-        $retrievedUser2 = DB::table('users')->where('id', $id)->get(); // this method retrieves $hidden fields as well
+        $retrievedUser1 = User::where('id', $id)->get(); // [THIS] no intellisense when writing it this way
+        $retrievedUser2 = User::find($id); // [THIS] variation of #1
+        $retrievedUser3 = DB::table('users')->where('id', $id)->get(); // this method retrieves $hidden fields as well
 
         return $retrievedUser0;
     }
@@ -45,6 +46,20 @@ class UserController extends Controller
         $user->save();
 
         return $user;
+    }
+
+    public function createRandomWithEmail($email)
+    {
+        $user = new User;
+
+        $user->email = $email;
+        $user->password = 'adMIN1234!';
+        $user->first_name = fake()->firstName();
+        $user->last_name = fake()->lastName();
+        $user->company = fake()->company();
+        $user->country = fake()->country();
+
+        $user->save();
     }
 
     public function update(Request $request, $id)

@@ -26,3 +26,11 @@ Generate a model and a migration, factory, seeder, and controller:
 ```
     php artisan make:model Flight -mfsc
 ```
+
+Checklist:
+
+1. create migration, factory and seeder `php artisan make:model NAME -mfsc`
+2. run migration with `php artisan migrate --path=/database/migrations/file_name.php`
+3. setup factory
+4. setup seeder
+5. create resource controller `php artisan make:controller NAME --resource`
