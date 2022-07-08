@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,3 +57,48 @@ Route::patch('/test/patchUser/{id}', function (Request $request, $id) {
 Route::delete('/test/deleteUser/{id}', function ($id) {
     return 'User ID ' . $id . ' deleted!';
 })->name('Delete User');
+
+// =-=-=-= TEST/USER
+
+Route::get('/test/users', function () {
+    $users = App\Models\User::all();
+    return $users;
+});
+
+Route::get('/test/user/{id}', function ($id) {
+    $retrievedUser0 = App\Models\User::all()->where('id', $id); // probably wrong because fetches all
+    $retrievedUser1 = User::where('id', $id)->get(); // no intellisense when writing it this way
+    $retrievedUser2 = DB::table('users')->where('id', $id)->get(); // this method retrieves $hidden fields as well
+    return $retrievedUser2;
+});
+
+Route::get('/test/users/desc/{num}', function ($num) {
+    $retrievedUsers0 = App\Models\User::all()->take($num)->sortByDesc('first_name');
+    $retrievedUsers1 = User::take($num)->get()->sortByDesc('first_name');
+    $retrievedUsers2 = DB::table('users')->take($num)->get()->sortByDesc('first_name');
+
+    return $retrievedUsers2;
+});
+
+// =-=-=-= USER
+
+Route::get('/user/all', [UserController::class, 'getAll']);
+Route::get('/user/{id}', [UserController::class, 'get', 'id']);
+Route::get('/user/take/{num}/desc', [UserController::class, 'getCountDescByLastName', 'num']);
+
+Route::post('/user', [UserController::class, 'create']);
+
+Route::put('/user/{id}', [UserController::class, 'update', 'id']);
+
+Route::delete('/user/{id}', [UserController::class, 'delete', 'id']);
+
+// =-=-=-= POST
+
+Route::get('/post/all', [PostController::class, 'getAll']);
+Route::get('/post/{id}', [PostController::class, 'get', 'id']);
+
+Route::post('/post', [PostController::class, 'create']);
+
+Route::put('/post/{id}', [PostController::class, 'update', 'id']);
+
+Route::delete('/post/{id}', [PostController::class, 'delete', 'id']);

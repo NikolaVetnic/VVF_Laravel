@@ -13,10 +13,5 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-        'http://localhost:8000/test/send',
-        'http://localhost:8000/test/register',
-        'http://localhost:8000/test/changeUser',
-        'http://localhost:8000/test/patchUser',
-        'http://localhost:8000/test/deleteUser'
     ];
 }
