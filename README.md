@@ -19,7 +19,7 @@ When naming table by creating models, by convention, the "snake case", plural na
 	protected $table = 'my_flights';
 ```
 
-## Database Seeding
+## Database Stuff
 
 Generate a model and a migration, factory, seeder, and controller:
 
@@ -34,3 +34,5 @@ Checklist:
 3. setup factory
 4. setup seeder
 5. create resource controller `php artisan make:controller NAME --resource`
+
+Adding columns via migrations - [read here](https://stackoverflow.com/questions/16791613/laravel-add-a-new-column-to-existing-table-in-a-migration).
