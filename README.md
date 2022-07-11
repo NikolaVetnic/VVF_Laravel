@@ -92,3 +92,9 @@ Files changed:
     user-auth-jwt/app/Http/Controllers/AuthController.php
     user-auth-jwt/app/Http/Middleware/EnsureTokenIsValid.php
 ```
+
+Message `Controller doesn't exist.` is solved [thusly](https://stackoverflow.com/questions/63807930/target-class-controller-does-not-exist-laravel-8).
+
+## Traits
+
+Traits HAVE TO BE in `/app/http/traits`.
