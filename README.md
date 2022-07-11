@@ -63,3 +63,32 @@ Checklist:
 5. create resource controller `php artisan make:controller NAME --resource`
 
 Adding columns via migrations - [read here](https://stackoverflow.com/questions/16791613/laravel-add-a-new-column-to-existing-table-in-a-migration).
+
+## Study app `user-auth`
+
+Files changed in order to add the countries list to the register form:
+
+```
+    resources/views/auth/register.blade.php
+    app/Http/Controllers/Auth/RegisterController.php
+    vendor/laravel/ui/auth-backend/RegistersUsers.php
+    app/Models/User.php
+
+    database/seeders/DatabaseSeeder.php
+    database/seeders/CountriesSeeder.php
+
+    storage/logs/laravel.log
+```
+
+## Study app `user-auth`
+
+Files changed:
+
+```
+    user-auth-jwt/app/Models/User.php
+    user-auth-jwt/config/auth.php
+    user-auth-jwt/routes/api.php
+    user-auth-jwt/app/Http/Controllers/DataController.php
+    user-auth-jwt/app/Http/Controllers/AuthController.php
+    user-auth-jwt/app/Http/Middleware/EnsureTokenIsValid.php
+```
