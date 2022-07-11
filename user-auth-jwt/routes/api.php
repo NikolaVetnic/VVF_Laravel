@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DataController;
+use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +33,16 @@ Route::group([
 
 Route::get('/data/open', [DataController::class, 'open'])->middleware(['api']);
 Route::get('/data/closed', [DataController::class, 'closed'])->middleware(['api', 'closed']);
+
+// Route::resources([
+//     'posts' => PostController::class,
+// ]);
+
+Route::group([
+    'middleware' => 'api',
+    'namespace' => 'App\Http\Controllers'
+], function ($router) {
+    Route::resources([
+        'posts' => PostController::class,
+    ]);
+});
