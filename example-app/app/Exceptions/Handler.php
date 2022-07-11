@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\CssSelector\Exception\ParseException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -22,7 +23,7 @@ class Handler extends ExceptionHandler
      * @var array<int, class-string<\Throwable>>
      */
     protected $dontReport = [
-        //
+        ParseError::class
     ];
 
     /**

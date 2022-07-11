@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\CustomException;
+use App\Exceptions\MyCustomException;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -32,5 +34,12 @@ class DataController extends Controller
         header("Content-Type: application/json");
 
         return json_encode($data);
+    }
+
+    public function throw()
+    {
+        throw new CustomException("Exception is always thrown.");
+
+        return json_encode(["msg" => "Hey there!    "]);
     }
 }

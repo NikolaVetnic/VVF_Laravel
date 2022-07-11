@@ -38,6 +38,7 @@ Route::group([
 ], function ($router) {
     Route::get('open', 'DataController@open');
     Route::get('closed', 'DataController@closed')->middleware('closed');
+    Route::get('throw', 'DataController@throw');
 });
 
 Route::group([
