@@ -37,7 +37,7 @@ When naming table by creating models, by convention, the "snake case", plural na
 
 ## Database Stuff
 
-In a new project, be sure to setup `database.php` (`database`, `username` and `password` fields) and `.env` files ([read more](https://stackoverflow.com/questions/61594990/sqlstatehy000-1045-access-denied-for-user-rootlocalhost-using-password)):
+In a new project, be sure to setup `/config/database.php` (`database`, `username` and `password` fields) and `.env` files ([read more](https://stackoverflow.com/questions/61594990/sqlstatehy000-1045-access-denied-for-user-rootlocalhost-using-password)):
 
 ```
     DB_CONNECTION=mysql
