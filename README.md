@@ -1,5 +1,21 @@
 # Notes
 
+## Starting the dev server & Logging
+
+Command:
+
+```
+    php -S localhost:80
+```
+
+Log to `storage/logs/laravel.log`:
+
+```
+    Log::debug('Some message.');
+```
+
+## Middleware Logging
+
 Middleware, log after request:
 
 ```
@@ -20,6 +36,17 @@ When naming table by creating models, by convention, the "snake case", plural na
 ```
 
 ## Database Stuff
+
+In a new project, be sure to setup `database.php` (`database`, `username` and `password` fields) and `.env` files ([read more](https://stackoverflow.com/questions/61594990/sqlstatehy000-1045-access-denied-for-user-rootlocalhost-using-password)):
+
+```
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=myapp
+    DB_USERNAME=root
+    DB_PASSWORD='root'
+```
 
 Generate a model and a migration, factory, seeder, and controller:
 
