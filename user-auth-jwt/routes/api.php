@@ -31,12 +31,14 @@ Route::group([
     Route::post('me', 'AuthController@me');
 });
 
-Route::get('/data/open', [DataController::class, 'open'])->middleware(['api']);
-Route::get('/data/closed', [DataController::class, 'closed'])->middleware(['api', 'closed']);
-
-// Route::resources([
-//     'posts' => PostController::class,
-// ]);
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'data',
+    'namespace' => 'App\Http\Controllers'
+], function ($router) {
+    Route::get('open', 'DataController@open');
+    Route::get('closed', 'DataController@closed')->middleware('closed');
+});
 
 Route::group([
     'middleware' => 'api',
